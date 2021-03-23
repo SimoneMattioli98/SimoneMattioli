@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <!--
+<link rel="stylesheet" type="text/css" href="../css/issStyle1.css">
+<script type="text/javascript" src="../css/issStyle.js"></script>
+-->
+<style type="text/css">
+body
+{
+    margin-left:  30px;
+    margin-right: 30px;
+};
+
+P
+{
+    font-family: Tahoma;
+    font-size: 10pt;
+};
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+	font-size: 93%;
+}
+
+a:hover {
+    background-color: #cccccc;
+}
+
+
+hr {
+    clear: both;
+    height: 1px;
+    color: #242424;
+    background-color: transparent;
+}
+
+h1, h2, h3 {
+    color: #242424;
+    clear: left;
+    font: 100% Tahoma, Helvetica, Arial, sans-serif;
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+	border-radius: 10px;
+	padding: 5px;
+}
+
+top {
+	width: 100%;
+}
+
+
+#i {
+    color: #ff1010;
+}
+tt{
+	font-family: "Arial";
+    font-size: 90%;
+	color: #006600;
+}
+em{
+	font-family: "Arial";
+    font-size: 80%;
+	font-weight: bold;
+	border-style:solid;
+	border-color: #abe876;
+    color: #1632cc;
+}
+bc{
+	font-family: "Arial";
+	font-size: 90%;
+	font-weight: bold;
+    color: #990000;
+	background-color: #fcf8c7;
+}
+ks{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #0000CD	;
+	font-size: 90%;
+}
+kc{
+	font-family: "Arial";
+	font-weight: bold;
+    color: #008000	;
+	font-size: 90%;
+}
+pre{
+	font-family: "Consolas";
+	font-size: 85%;
+	background-color: #f5f5f5;
+	border: 1.5px solid silver;
+	padding: 5px;
+}
+m{
+	font-family: "Helvetica";
+	line-height: 100%;
+ 	font-size: 75%;
+}
+div.body{
+	 
+    font-size: 18px;
+}
+k{
+    color: #990000;
+	font-weight: bold;
+	font-size: 90%;
+}
+h1 {
+    font-size: 150%;
+    background-color: #b2c0ff;
+	padding: 10px;
+}
+
+h2 {
+    background-color: #9ed8ff;
+    font-size: 130%;
+}
+
+h3 {
+	background-color: #e6ccff;
+    font-size: 100%;
+}
+h4 {
+    background-color: #ccffcc;
+    font-size: 100%;
+	width: 95%;
+	border-radius: 5px;
+	padding: 2px;
+}
+h5 {
+    background-color: #d5ffb0;
+    font-size: 100%;
+
+}
+div.req{
+	background-color: #d9ffb3;
+    font-size: 18px;
+	width: 700px;
+    border: 3px solid green;
+    padding: 15px;
+    margin: 10px;
+}
+div.remark{
+	background-color: #E3F2FD;
+    border: 1.5px solid #d5f2ed;
+    padding: 15px;
+    margin: 10px;
+	border-radius: 25px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+ol, ul, li {
+  margin: 0;
+  margin-left: 10px;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+img {
+	border: 1.5px solid #d5f2ed
+
+}
+
+a, a:visited, a:active, a:link, a:hover {
+    text-decoration: underline;
+    color: #545454;
+    background-color: transparent;
+}
+
+div.wrapdesc{
+	width: 90%;
+	margin: auto;
+}
+
+div.imagedesc{
+	width: 85%;
+	margin: auto;
+}
+</style>
+    
+<head>
+   
+<title>mattioli_simone_ce</title></head>
+    
+<body>
+<div id="top">
+<h1>LABORATORIO DI INGEGNERIA DEI SISTEMI SOFTWARE <font size="5"></font> </h1>
+</div>  
+
+<div class="body"> 
+<h2>Introduction</h2>
+<div class="remark">
+    This case-study starts to deal with the design and development of proactive/reactive software systems that use aynchronous exchange of information.
+</div>
+ 
+<h2>Requirements</h2>
+<div class="remark">
+    Design and build a software system that allow the robot described in <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html">VirtualRobot2021.html</a>
+    to exibit the following behaviour:
+    <ul>
+        <li>
+            the robot lives in a closed environment, delimited by walls that includes one or more devices (e.g. sonar) able 
+            to detect its presence;
+        </li>
+        <li>
+            the robot has a <ks>den</ks> for refuge, located near a wall;
+        </li>
+        <li>
+            the robot works as an explorer of the environment. Starting from its <ks>den</ks>, the robot moves (either randomly or - preferably - in a more organized way) with the aim to find the fixed obstacles around the <ks>den</ks>. The presence of mobile obstacles is (at the moment) excluded;
+        </li>
+        <li>
+            since the robot is 'cautious', it returns immediately to the <ks>den</ks> as soon as it finds an obstacle. Optionally, it should also return to the den when a sonar detects its presence;
+        </li>
+        <li>
+            the robot should remember the position of the obstacles found, by creating a sort of 'mental map' of the environment.
+        </li>
+    </ul>
+</div>
+ 
+ 
+
+<h2>Requirement analysis</h2>
+ 
+<div class="remark">
+    A closer confrontation with the custum has clarified that the customer intends:<br>
+    <b>NOUNS</b>
+    <ul>
+        <li>"<ks>robot</ks>": a device able to execute move commands sent over the network, as described in the document <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html">VirtualRobot2021.html</a> provided by the customer;</li>
+        <li>"<ks>closed environment</ks>": a conventional (rectangular) room of an house, delimited by <ks>walls</ks>;</li>
+        <li>"<ks>sonar</ks>": external device that is included in the boundary of the room that aquires information about the robot's position inside the room. <ks>Optionally</ks> the robot will have to return to 
+        its den if it detects its presence. This constitutes the <ks>reactive</ks> part of our sistem because it reacts to the robot's presence;</li>
+        <li>"<ks>den</ks>": fixed starting position inside the room near a <ks>wall</ks> where the robot will be located before the software starts. The costumer initialized the <ks>den</ks> in the up left corner, facing South;</li>
+        <li>"<ks>obstacles</ks>": <ks>general objects</ks> or even <ks>walls</ks> around or inside the boundary of the room. The obstacles can be fixed or mobile;</walls></li>
+        <li>"<ks>mental map</ks>": an abstract representation of the room where the robot is and the obstacles inside. The robot <ks>should remember</ks> it;</li>
+    </ul>
+    <b>VERBS</b>
+    <ul>
+        <li>"<ks>walk</ks>": the robot moves freely in any direction. Its path can be random or (<ks>preferably</ks>) organized. This constitutes also the <ks>pro-active</ks> part of pur system;</li>
+        <li>"<ks>finds</ks>": the robot finds an obstacle when the robot collides with it</li>
+        <li>"<ks>should remember</ks>": it is important that the robot is able to remember the map;</li>
+    </ul>
+    <b>ADVERBS</b>
+    <ul>
+        <li>"<ks>optionally</ks>": the costumer will pay more or will choose more likely this solution if we add the optional feature;</li>
+    </ul>
+    
+</div>
+
+<div class="remark">
+    The costumer request an analysis (requirements and problems) and a first project for <ks>Marth 16th 2021</ks>.
+</div>
+<h3>User stories</h3>
+<table style="width:98%">
+    <tbody>
+        <tr>
+            <td style="width: 70%;">
+                <h3>User story 1</h3>
+                The robot is located in his starting <ks>den</ks> facing South. When the sofware application is started
+                the robot will randomly or in a controlled manner move inside the closed environment. Whenever it is found an <ks>obstacle</ks> the robot 
+                will have to return to its <ks>den</ks>. 
+                While the robot moves it aquires information about the environment it is in by creating a map.<br><br>
+
+                <h3>User story 2</h3>
+                The robot optionally will have to return to its den if the sonar detects it.
+            </td>
+            <td>
+                <img src="./img/user-story.jpg" alt="user-story" width="90%">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 70%;">When the application terminates, the itinerary done by the robot must be that shown in the figure and a proper <ks>TestPlan</ks> should properly check this outcome.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Problem analysis</h2>
+<div class="remark">
+    We highlight that:
+    <ol>
+        <li>In the <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html">VirtualRobot2021.html</a>: commands the customer states that the robot can receive move commands in two different ways:
+            <ul>
+                <li>by sending messages to the port 8090 using <ks>HTTP POST</ks></li>
+                <li>by sending messages to the port 8091 using a <ks>websocket</ks></li>
+            </ul>
+        </li>
+        
+        <li>With respect to the technological level, there are many libraries in many programming languages that support the required protocols.
+            <ul>
+                <li>    However, the problem does introduce an <b>abstraction gap at the conceptual level</b>, since <b>the required logical interaction</b> is always a <ks>request-response</ks>, <b>regardless of the technology</b> used to implement the interaction with the robot.
+                </li>
+            </ul>
+        </li>
+        
+        <li>It the case that a sonar is implemented a approch with websocket will be more efficient, because otherwise, if we use HTTP, we should do polling to acquire informations from it. </li>
+        <li>Two types of control language are made availlable from the costumer: the <ks>cril</ks> and the <ks>aril</ks>;
+            <ul>
+                <li>cril: we need to specify the time lenght of the command when we want to send a message;</li>
+                <li>aril: the time lenght of the command is fixed;</li>
+            </ul></li>
+        
+        <li>The aril language is prefered at test time because we can already know the desired results. For the same reason a controlled way of moving 
+            the robot is prefered.
+        </li>
+        <li>The return to the den also can be implemented in different ways:
+            <ul>
+                <li>Can take the same path but backwards;</li>
+                <li>Can choose a path never taken before;</li>
+                <li>Can take the longest path;</li>
+                <li>Can take the shortest path;</li>
+            </ul>
+            We suggest the second solution to make the robot explore more about the environment on its way back to the den; 
+        </li>
+
+    </ol>
+</div>
+
+<h3>Logical architecture</h3>
+<table style="width:98%">
+    <tbody>
+        <tr>
+            <td style="width: 70%;">
+                We nust design and build a distributed system with two software macro-components:
+                <ol>
+                    <li>the <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html">VirtualRobot</a>, given by the customer</li>
+                    <li>our <b>cautiousExplorer</b> application that interacts with the robot with a <b>request-response</b> pattern</li>
+                </ol>
+                A first scheme of the logical architecture of the systems can be defined as shown in the figure (for the meaning of the symbols, see the <a href="./img/legenda.png" target="web">legenda</a>)
+            </td>
+            <td>
+                <img src="./img/logic-arch.png" alt="user-story" width="90%">
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="remark">
+    It is observed that:
+    <ul>
+        <li>To make out software application as much as possible independent from the undelying communication protocols,
+            the designer could make references to proper <b>design</b> patterns such as <ks>Adapter</ks>, <ks>Factory</ks>, <ks>Builder</ks>, ext.
+        </li>
+        <li>It is quite easy to define <b>what the robot has to do</b> to meet the requirements.
+            We can define a set of availlable movement directions for the robot (Down, Up, Left, Right).
+            Then the robot is located to is <ks>den</ks> facing the South direction.
+            Until the robot doesn't encounter an obstacle or the sonar detects its presence and check his behavior on its way back to the den;   </li>  
+    </ul>
+    
+        
+    
+</div>
+
+<h2>Test plans</h2> 
+<div class="remark">
+    To check if the application fulfills the requirements, we could keep track of every moves done by the robot. Once a collision is detected or the sonar detects the robot's presence we can:<br><br>
+    <ks>FIRST</ks> we check if we are not already in the starting position. Then:
+    <h3>Test 1</h3>
+    Map backwards the moves into their opposites 
+    <br>
+    For instance:
+    <ol>
+        <li>Let's define a <kc>String moves="";</kc></li>
+        <li>Every time the robot moves we append the symbol corresponding to the direction taken (e.g. after the command <kc>moveForward</kc> we append a <ks>"w"</ks>
+        and if a command moveLeft is sent after, we append a <ks>"l"</ks>. At the end <kc>moves</kc> will look like <ks>"wl"</ks>) ;</li>
+        <li>After a collision or an interruption (by sonar or user) is detected, we map <kc>moves</kc> to its opposit <kc>String movesOpos="rb"</kc> (we map backwards so <ks>"wl"</ks> becomes <ks>"lw"</ks> and we substitute each movement with its oposite <ks>l -> r (right)</ks>, <ks>w -> b (back)</ks>);</li>
+        <li>Then we clear <kc>moves</kc> and we repeat the point number 2;</li>
+        <li>At the end we compare the new value of <kc>moves</kc> with <kc>movesOpos</kc>;</li>
+    </ol>
+
+    The last point can be easily checked with a TestUnit software.
+    <h3>Test 2</h3>
+    We make the robot face always the direction he is taking. In this case we map all the back command with a double turn right or left (indiscriminately) followed by a forward, so that the robot will face the direction it will take. Only if the last move is backword we just 
+    substitute it with a forward command.
+    Also we map the turn into their oposite, so all the left will become right and the right left. At the and we add two or one turn left or right based on which direction we are facing when we get to the den.
+    <img src="./img/test2.jpg" alt="test 2" width="30%">
+
+    <h3>Test 3</h3>
+    We can also calculate a best bath using a shortest path algorithm or a longest path algoritm. In this case we look for the closest or longest way to reach our destination.
+    The written test woulb the implementation of the search path algorithm.
+
+
+</div>
+
+<h2>Project</h2> 
+<h3>Nature of the application component</h3>
+<table style="width:98%">
+    <tbody>
+        <tr>
+            <td style="width: 70%;">
+                Our application "<ks>cautiousExplorer</ks>" will be a conventional Java program and it can be 
+                represended by a object with an internal thread, as is shown in the figure.
+            </td>
+            <td>
+                <img src="./img/projectArch.jpg" alt="project architecture" width="90%">
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h3>Communication's abstraction layer</h3>
+<table style="width:98%">
+    <tbody>
+        <tr>
+            <td style="width: 70%;">
+               It is noticed from the technological detail from <a href="https://htmlpreview.github.io/?https://github.com/anatali/issLab2021/blob/master/it.unibo.virtualRobot2020/userDocs/VirtualRobot2021.html">VirtualRobot2021.html</a> that we have two different technologies for communicating with the robot.
+               This gap can be resolved by adding an abstraction level creating a layered architecture, which is the simplest form of software architecture.
+               A pattern usefull to fulfill the gap is the pattern Facade which allows the programmers to work through an object to minimize the dependencies on a subsistem (in our case the communication).
+               So we will have an interface containing the basic method such as <ks>forward</ks>, <ks>reply</ks> and <ks>request</ks> which are common to both <ks>HTTP</ks> and <ks>Websocket</ks> protocols.
+               The java interface defined in the project <ks>boundaryWalk</ks> named <a href="boundaryWalkUtils/IssOperations.java" target="web"><em>IssOperations.java</em></a> will do the job. The way this interface can be used is shown in the image.
+            </td>
+            <td>
+                <img src="./img/issCommsLayers.png" alt="communication abstraction level - Facade" width="90%">
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 70%;">
+               It is possible to add another abstraction layer on the creation of the object that will handle the communication. We can use the pattern Factory embadded in a class that will
+               initialize the protocol that will be used. The class <a href="boundaryWalkUtils/IssCommsSupportFactory.java" target="web"><em>IssCommsSupportFactory.java</em></a></a> from <ks>boundaryWalk</ks> will do the job.
+             </td>
+             <td>
+                 <img src="./img/IssCommsFactory.png" alt="communication abstraction level - Factory" width="90%">
+             </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Workflow - Priority list</h3>
+<div class="remark">
+    We define a list of priority for the fulfillment of requirements. The smallest the list index the higher the priority:
+    <ol>
+        <li>Create a stable and efficient communication system that can handle both HTTP and websocket. Otherwise if we are not apble to communicate with the 
+            robot there is no point of doing everything else;
+        </li>
+        <li>Add to the communication system the message format (cril, aril). A great solution would to make the user able of using both languages;</li>
+        <li>Make the robot move in organized way and randomly;</li>
+        <li>Make the robot go back to the den once it finds an obstacle; For semplicity at the beginning the robot can take just the path backwards</li>
+        <li>Use the information received from the robot to create the mental map;</li>
+        <li>Use the sonar information to make the robot go back to the den when detected;</li>
+    </ol>
+</div>
+
+
+
+<h2>Testing</h2> 
+ 
+
+<h2>Deployment</h2> 
+
+ 
+<h2>Maintenance</h2> 
+ 
+<!-- USEFUL
+<table style="width:100%" border="1">
+<tr>
+<td style="width:50%">
+</td>
+<td></td>
+</tr>
+</table>
+-->
+	      	
+<br/><br/> 	
+</div>  
+
+<div style="background-color:rgba(86, 56, 253, 0.9); width:60%;text-align:left;color:white">
+By Simone Mattioli email: simone.mattioli6@studio.unibo.it  
+<img src="./img/Optimized-DSC_0050_flip.jpg" alt="profile image" width="15%" height="15%">
+</div> 
+</body>
+</html>
